@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Nedir.com</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigasyon Barı -->
+    <header>
+        <nav>
+            <a href="main.html" class="logo">Nedir.com</a>
+            <ul class="nav-links">
+                <li><a href="main.html">Ana Sayfa</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="hakkimda.html">Hakkımda</a></li>
+                <li><a href="#">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Küçük Hero Bölümü -->
+    <section class="hero blog-hero">
+        <div class="hero-content">
+            <h1>Blog Yazıları</h1>
+            <p>Tüm düşünceler, ders notları ve teknoloji üzerine yazılar.</p>
+        </div>
+    </section>
+
+    <!-- Blog ve Filtreleme Alanı -->
+    <div class="container">
+
+        <!-- Filtre ve Sıralama Kontrolleri -->
+        <div class="blog-controls">
+            <div class="control-group">
+                <label for="categoryFilter">Kategori:</label>
+                <select id="categoryFilter">
+                    <option value="all">Tümü</option>
+                    <option value="Teknoloji">Teknoloji</option>
+                    <option value="Yaşam">Yaşam</option>
+                    <option value="Öğrenme">Öğrenme</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="dateSort">Sıralama:</label>
+                <select id="dateSort">
+                    <option value="newest">Yeniden Eskiye</option>
+                    <option value="oldest">Eskiden Yeniye</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Yazıların Listeleneceği Yer -->
+        <div class="blog-grid" id="blogGrid">
+            <!-- JavaScript ile doldurulacak -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Taner'in Blog Projesi. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="blog.js"></script>
+</body>
+
+</html>
