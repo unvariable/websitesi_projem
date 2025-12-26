@@ -1,52 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Örnek Blog Verileri
-    const blogPosts = [
-        {
-            id: 1,
-            title: "Web Tasarımı Nedir?",
-            description: "Web tasarımı süreçleri, HTML ve CSS temelleri üzerine kısa bir giriş yazısı. Tasarımın inceliklerini öğrenin.",
-            image: "images/web_tasarimi.png",
-            date: "2025-12-20",
-            category: "Teknoloji",
-            link: "posts/web-tasarimi-nedir.html"
-        },
-        {
-            id: 2,
-            title: "Kodlamaya Başlarken",
-            description: "Programlama dünyasına adım atmak isteyenler için tavsiyeler. Hangi dilden başlamalı?",
-            image: "images/kodlama.jpg",
-            date: "2025-12-18",
-            category: "Öğrenme",
-            link: "posts/kodlamaya-baslarken.html"
-        },
-        {
-            id: 3,
-            title: "Öğrenci Hayatı ve Zaman Yönetimi",
-            description: "Dersler ve sosyal hayat arasındaki dengeyi nasıl kurabiliriz? Etkili çalışma teknikleri.",
-            image: "images/zaman_yonetimi.png",
-            date: "2025-12-19",
-            category: "Yaşam",
-            link: "posts/ogrenci-hayati-ve-zaman-yonetimi.html"
-        },
-        {
-            id: 4,
-            title: "Yapay Zeka ve Gelecek",
-            description: "Yapay zekanın hayatımızdaki yeri ve gelecekte bizi nelerin beklediği hakkında.",
-            image: "https://source.unsplash.com/random/400x300/?ai,robot",
-            date: "2025-12-15",
-            category: "Teknoloji",
-            link: "#" 
-        },
-        {
-            id: 5,
-            title: "Verimli Ders Çalışma Teknikleri",
-            description: "Pomodoro tekniği ve daha fazlası ile daha kısa sürede daha çok şey öğrenin.",
-            image: "https://source.unsplash.com/random/400x300/?study,book",
-            date: "2025-12-10",
-            category: "Öğrenme",
-            link: "#"
-        }
-    ];
+    // blogPosts verisi data.js dosyasından otomatik olarak gelir.
 
     const grid = document.getElementById('blogGrid');
     const categoryFilter = document.getElementById('categoryFilter');
@@ -54,11 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderPosts(posts) {
         grid.innerHTML = '';
-        
+
         posts.forEach(post => {
             const article = document.createElement('article');
             article.className = 'blog-card';
-            
+
             // Tarihi formatla (YYYY-MM-DD -> DD.MM.YYYY)
             const dateObj = new Date(post.date);
             const formattedDate = dateObj.toLocaleDateString('tr-TR');

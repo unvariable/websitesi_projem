@@ -1,20 +1,35 @@
-/* Genel Ayarlar */
+/* 
+   NEDİR.COM - GENEL STİL DOSYASI
+   Bu dosya tüm sayfaların tasarımını ve ortak bileşenleri içerir.
+*/
+
+/* --- Değişkenler (Renk ve Tasarım Sistemi) --- */
 :root {
+    /* Ana Renkler */
     --primary-color: #2c3e50;
-    /* Koyu Lacivert */
+    /* Koyu Lacivert - Başlıklar ve Navigasyon */
     --accent-color: #e74c3c;
-    /* Canlı Kırmızı */
+    /* Canlı Kırmızı - Butonlar ve Vurgular */
     --bg-color: #f4f7f6;
-    /* Açık Gri Arkaplan */
+    /* Açık Gri - Genel Sayfa Arkaplanı */
     --text-color: #333;
+    /* Koyu Gri - Ana Metin Rengi */
     --white: #ffffff;
+
+    /* Özel Durum Renkleri (Anket vb.) */
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+
+    /* Yerleşim Ayarları */
     --nav-height: 70px;
+    --border-radius: 15px;
+
+    /* Cam Efekti (Glassmorphism) için */
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: rgba(255, 255, 255, 0.3);
-    --shadow-blur: 20px;
-    --border-radius: 15px;
 }
 
+/* --- Temel Sıfırlama ve Gövde Ayarları --- */
 * {
     margin: 0;
     padding: 0;
@@ -26,26 +41,30 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    padding-top: var(--nav-height);
-    /* Navigasyon barı yüksekliği kadar boşluk bırak */
+    /* padding-top kaldırıldı: Hero görsellerinin header arkasına taşması sağlandı */
 }
 
-/* Navigasyon Barı */
+/* --- Navigasyon Barı (Header) --- */
 header {
-    background-color: var(--primary-color);
+    background-color: rgba(44, 62, 80, 0.5);
+    /* Şeffaf lacivert */
+    backdrop-filter: blur(12px);
+    /* Akrilik bulanıklık efekti */
+    -webkit-backdrop-filter: blur(12px);
     height: var(--nav-height);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    /* Scroll animasyonu için geçiş efekti */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* İnce alt çizgi */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
+/* Scroll durumunda JS ile eklenen sınıf */
 .nav-hidden {
     transform: translateY(-100%);
-    /* Navigasyonu yukarı gizle */
 }
 
 nav {
@@ -76,32 +95,39 @@ nav {
 }
 
 .nav-links a {
-    color: #bdc3c7;
+    color: rgba(255, 255, 255, 0.8);
+    /* Daha canlı beyazımsı metin */
     text-decoration: none;
     font-size: 1rem;
+    font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--white);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-/* Hero Section (Karşılama) */
+/* --- Hero Bölümleri (Giriş Alanları) --- */
 .hero {
-    background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://source.unsplash.com/random/1600x900/?technology,writing');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/hero_bg.png');
     background-size: cover;
     background-position: center;
-    height: 60vh;
+    background-attachment: fixed;
+    /* Parallaks efekti için */
+    height: 70vh;
+    /* Yükseklik biraz artırıldı (header dahil olduğu için) */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: var(--white);
-    /* margin-top kaldırıldı çünkü body padding'i bu işi görüyor */
+    padding-top: var(--nav-height);
+    /* Metnin header altında kalmaması için */
 }
 
-/* Blog sayfası için daha kısa hero */
+/* Blog sayfası için daha kısa hero tasarımı */
 .blog-hero {
     height: 40vh;
 }
@@ -117,11 +143,34 @@ nav {
     margin: 0 auto;
 }
 
-/* Ana İçerik Alanı */
+/* --- Hakkımda Sayfası Hero Alanı --- */
+.about-hero {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    margin-bottom: -100px;
+    /* Kartın hero üzerine taşması için */
+    padding-top: var(--nav-height);
+}
+
+/* --- Genel Konteynır ve Başlıklar --- */
 .container {
     max-width: 1200px;
-    margin: 50px auto;
-    padding: 0 20px;
+    margin: 30px auto;
+    padding: var(--nav-height) 20px 0;
+    /* Header'sız sayfalarda içeriği aşağı iter */
+}
+
+/* Hero olan sayfalarda container'ı çok aşağı itmemek için */
+.hero+.container,
+.blog-hero+.container,
+.about-hero+.container {
+    padding-top: 0;
+    margin-top: 50px;
 }
 
 .section-title {
@@ -131,8 +180,7 @@ nav {
     font-size: 2rem;
 }
 
-
-/* Blog Kontrolleri */
+/* --- Blog Filtreleme ve Kontroller --- */
 .blog-controls {
     display: flex;
     justify-content: center;
@@ -161,7 +209,7 @@ nav {
     cursor: pointer;
 }
 
-/* Blog Alanı */
+/* --- Blog Grid ve Kart Tasarımı --- */
 .blog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -191,7 +239,6 @@ nav {
 .card-content {
     padding: 20px;
     flex-grow: 1;
-    /* Kart boylarını eşitlemek için */
     display: flex;
     flex-direction: column;
 }
@@ -224,6 +271,7 @@ nav {
     font-size: 0.95rem;
 }
 
+/* Devamını Oku Butonu */
 .read-more {
     display: inline-block;
     padding: 10px 20px;
@@ -233,36 +281,14 @@ nav {
     border-radius: 5px;
     transition: background 0.3s ease;
     align-self: flex-start;
-    /* Butonu sola yasla */
     margin-top: auto;
-    /* İçerik az olsa bile butonu en alta it */
 }
 
 .read-more:hover {
     background-color: #c0392b;
 }
 
-/* Footer */
-footer {
-    background-color: var(--primary-color);
-    color: var(--white);
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 50px;
-}
-
-/* Hakkımda Sayfası Yeni Stiller */
-.about-hero {
-    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-    margin-bottom: -100px;
-}
-
+/* --- Hakkımda Sayfası İçerik Kartı --- */
 .about-container {
     max-width: 900px;
     margin: 0 auto;
@@ -313,6 +339,7 @@ footer {
     margin-bottom: 20px;
 }
 
+/* İletişim Kartı */
 .contact-card {
     background: white;
     border-radius: 10px;
@@ -343,6 +370,118 @@ footer {
     text-decoration: underline;
 }
 
+/* --- Anket Sayfası (Survey) Stilleri --- */
+.survey-container {
+    background: var(--white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-top: 30px;
+}
+
+.survey-form .form-group {
+    margin-bottom: 25px;
+}
+
+.survey-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+.survey-form input[type="text"],
+.survey-form input[type="email"],
+.survey-form input[type="number"],
+.survey-form input[type="date"],
+.survey-form select,
+.survey-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #edf2f7;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+}
+
+.survey-form input:focus,
+.survey-form select:focus,
+.survey-form textarea:focus {
+    border-color: var(--indigo);
+    outline: none;
+    background-color: var(--white);
+    box-shadow: 0 0 0 4px rgba(102, 16, 242, 0.1);
+}
+
+.survey-form .radio-group,
+.survey-form .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.survey-form .radio-item,
+.survey-form .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 8px 15px;
+    border: 2px solid #edf2f7;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.survey-form .radio-item:hover,
+.survey-form .checkbox-item:hover {
+    background-color: #edf2f7;
+}
+
+.survey-form input[type="radio"],
+.survey-form input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.survey-form input[type="range"] {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Anket Gönder Butonu */
+.survey-form .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--indigo) 0%, var(--purple) 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+}
+
+.survey-form .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(111, 66, 193, 0.4);
+}
+
+/* --- Footer (Alt Bilgi) --- */
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+/* --- Animasyonlar --- */
 @keyframes fadeInUp {
     from {
         opacity: 0;

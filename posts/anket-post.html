@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Deneyimi Anketi | Nedir.com</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- Navigasyon Barı -->
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">Nedir.com</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Ana Sayfa</a></li>
+                <li><a href="../blog.html">Blog</a></li>
+                <li><a href="../hakkimda.html">Hakkımda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- İçerik -->
+    <div class="container">
+        <article class="blog-post">
+            <h1 class="section-title" style="text-align: left; margin-bottom: 10px;">Kullanıcı Deneyimi Anketi</h1>
+            <div class="post-meta" style="margin-bottom: 20px;">
+                <span class="category-tag">Öğrenme</span>
+                <span class="date-tag">26.12.2025</span>
+            </div>
+            <img src="../images/survey_header.png" alt="Anket Görseli"
+                style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;">
+
+            <p>Sizleri daha yakından tanımak ve sitemizdeki deneyiminizi iyileştirmek istiyoruz. Lütfen aşağıdaki kısa
+                anketi doldurarak bize yardımcı olun!</p>
+
+            <div class="survey-container">
+                <form class="survey-form" id="userSurvey">
+
+                    <!-- Text & Email -->
+                    <div class="form-group">
+                        <label for="userName">Adınız ve Soyadınız</label>
+                        <input type="text" id="userName" name="userName" placeholder="Örn: Ahmet Yılmaz" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userEmail">E-posta Adresiniz</label>
+                        <input type="email" id="userEmail" name="userEmail" placeholder="abc@ornek.com" required>
+                    </div>
+
+                    <!-- Number -->
+                    <div class="form-group">
+                        <label for="userAge">Yaşınız</label>
+                        <input type="number" id="userAge" name="userAge" min="13" max="100">
+                    </div>
+
+                    <!-- Select -->
+                    <div class="form-group">
+                        <label for="source">Bizi Nereden Duydunuz?</label>
+                        <select id="source" name="source">
+                            <option value="">Seçiniz...</option>
+                            <option value="social">Sosyal Medya</option>
+                            <option value="search">Arama Motorları</option>
+                            <option value="friend">Arkadaş Tavsiyesi</option>
+                            <option value="other">Diğer</option>
+                        </select>
+                    </div>
+
+                    <!-- Radio Buttons -->
+                    <div class="form-group">
+                        <label>Sitemizi ne sıklıkla ziyaret ediyorsunuz?</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="frequency" value="daily"> Her gün
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="frequency" value="weekly"> Haftada birkaç kez
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="frequency" value="monthly"> Ayda bir
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Checkboxes -->
+                    <div class="form-group">
+                        <label>İlgi duyduğunuz konular (Birden fazla seçebilirsiniz)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="interests" value="tech"> Teknoloji
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="interests" value="design"> Tasarım
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="interests" value="science"> Bilim
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="interests" value="art"> Sanat
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="form-group">
+                        <label for="lastVisit">En son hangi tarihte sitemizi beğendiğiniz bir yazı için ziyaret
+                            ettiniz?</label>
+                        <input type="date" id="lastVisit" name="lastVisit">
+                    </div>
+
+                    <!-- Range -->
+                    <div class="form-group">
+                        <label for="satisfaction">Genel memnuniyet düzeyiniz (0-10)</label>
+                        <input type="range" id="satisfaction" name="satisfaction" min="0" max="10" value="5">
+                        <div
+                            style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 0.8rem; color: #666;">
+                            <span>Hiç memnun değilim</span>
+                            <span>Çok memnunum</span>
+                        </div>
+                    </div>
+
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label for="feedback">Eklemek istediğiniz önerileriniz var mı?</label>
+                        <textarea id="feedback" name="feedback" rows="4"
+                            placeholder="Görüşlerinizi buraya yazabilirsiniz..."></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn" id="submitSurvey">Anketi Gönder</button>
+                </form>
+            </div>
+
+            <a href="../blog.html" class="read-more" style="margin-top: 30px;">&larr; Blog Sayfasına Dön</a>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Taner'in Blog Projesi. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.getElementById('userSurvey').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Anketiniz başarıyla alındı! Teşekkür ederiz.');
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>
